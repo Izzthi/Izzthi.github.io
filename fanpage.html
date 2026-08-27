@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cristiano Ronaldo | Fan Page</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background: #0b0b0b;
+        color: white;
+        line-height: 1.6;
+      }
+
+      /* Navigation */
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        padding: 18px 8%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(0, 0, 0, 0.9);
+        z-index: 1000;
+        border-bottom: 1px solid #333;
+      }
+
+      .logo {
+        font-size: 24px;
+        font-weight: bold;
+        color: #e30613;
+      }
+
+      nav ul {
+        display: flex;
+        gap: 30px;
+        list-style: none;
+      }
+
+      nav a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        transition: 0.3s;
+      }
+
+      nav a:hover {
+        color: #e30613;
+      }
+
+      /* Hero */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 100px 20px 50px;
+        background:
+          linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.9)),
+          url("https://upload.wikimedia.org/wikipedia/commons/8/8c/Cristiano_Ronaldo_2018.jpg");
+        background-size: cover;
+        background-position: center;
+      }
+
+      .hero-content {
+        max-width: 900px;
+        animation: fadeUp 1.2s ease;
+      }
+
+      .hero h1 {
+        font-size: clamp(50px, 9vw, 110px);
+        letter-spacing: 5px;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+      }
+
+      .hero h1 span {
+        color: #e30613;
+      }
+
+      .hero p {
+        font-size: 22px;
+        color: #ddd;
+        margin-bottom: 30px;
+      }
+
+      .hero-btn {
+        display: inline-block;
+        padding: 14px 30px;
+        background: #e30613;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: 0.3s;
+      }
+
+      .hero-btn:hover {
+        background: white;
+        color: #e30613;
+        transform: translateY(-3px);
+      }
+
+      /* Sections */
+      section {
+        padding: 90px 10%;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 40px;
+        margin-bottom: 50px;
+      }
+
+      .section-title span {
+        color: #e30613;
+      }
+
+      /* About */
+      .about {
+        background: #111;
+      }
+
+      .about-container {
+        display: flex;
+        gap: 50px;
+        align-items: center;
+        max-width: 1100px;
+        margin: auto;
+      }
+
+      .about-image {
+        width: 350px;
+        height: 450px;
+        object-fit: cover;
+        border-radius: 10px;
+        border: 3px solid #e30613;
+      }
+
+      .about-text {
+        flex: 1;
+      }
+
+      .about-text h3 {
+        font-size: 30px;
+        margin-bottom: 20px;
+      }
+
+      .about-text p {
+        color: #ccc;
+        margin-bottom: 15px;
+      }
+
+      /* Stats */
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        max-width: 1100px;
+        margin: 50px auto 0;
+      }
+
+      .stat {
+        background: #191919;
+        padding: 30px 15px;
+        text-align: center;
+        border-radius: 10px;
+        border-bottom: 4px solid #e30613;
+        transition: 0.3s;
+      }
+
+      .stat:hover {
+        transform: translateY(-8px);
+      }
+
+      .stat h3 {
+        font-size: 38px;
+        color: #e30613;
+      }
+
+      .stat p {
+        color: #bbb;
+      }
+
+      /* Facts */
+      .facts {
+        background: #0b0b0b;
+      }
+
+      .fact-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+        max-width: 1100px;
+        margin: auto;
+      }
+
+      .fact-card {
+        background: #171717;
+        padding: 30px;
+        border-radius: 10px;
+        transition: 0.3s;
+      }
+
+      .fact-card:hover {
+        transform: scale(1.03);
+        background: #202020;
+      }
+
+      .fact-number {
+        color: #e30613;
+        font-size: 35px;
+        font-weight: bold;
+      }
+
+      .fact-card h3 {
+        margin: 10px 0;
+      }
+
+      .fact-card p {
+        color: #bbb;
+      }
+
+      /* Interactive Feature */
+      .interactive {
+        background: #111;
+        text-align: center;
+      }
+
+      .fact-box {
+        max-width: 700px;
+        margin: auto;
+        background: #191919;
+        padding: 45px;
+        border-radius: 12px;
+        border: 1px solid #333;
+      }
+
+      #randomFact {
+        font-size: 22px;
+        min-height: 70px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 30px;
+        color: #eee;
+      }
+
+      .fact-button {
+        padding: 14px 28px;
+        border: none;
+        border-radius: 5px;
+        background: #e30613;
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .fact-button:hover {
+        background: white;
+        color: #e30613;
+      }
+
+      /* Quote */
+      .quote {
+        text-align: center;
+        background: #e30613;
+        padding: 80px 15%;
+      }
+
+      .quote p {
+        font-size: 30px;
+        font-weight: bold;
+      }
+
+      .quote span {
+        display: block;
+        margin-top: 15px;
+        font-size: 16px;
+        font-weight: normal;
+      }
+
+      /* Footer */
+      footer {
+        padding: 30px;
+        text-align: center;
+        background: #050505;
+        color: #888;
+      }
+
+      footer strong {
+        color: #e30613;
+      }
+
+      /* Animation */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Responsive */
+      @media (max-width: 800px) {
+        nav {
+          padding: 15px 5%;
+        }
+
+        nav ul {
+          gap: 12px;
+          font-size: 13px;
+        }
+
+        .about-container {
+          flex-direction: column;
+        }
+
+        .about-image {
+          width: 280px;
+          height: 360px;
+        }
+
+        .stats {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .fact-grid {
+          grid-template-columns: 1fr;
+        }
+
+        section {
+          padding: 70px 6%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav>
+      <div class="logo">CR7</div>
+
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#facts">Facts</a></li>
+        <li><a href="#interactive">Fun</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <!-- Hero -->
+      <section class="hero" id="home">
+        <div class="hero-content">
+          <h1>Cristiano <span>Ronaldo</span></h1>
+          <p>One of football's most iconic players.</p>
+
+          <a href="#about" class="hero-btn"> Explore CR7 </a>
+        </div>
+      </section>
+
+      <!-- About -->
+      <section class="about" id="about">
+        <h2 class="section-title">About <span>CR7</span></h2>
+
+        <div class="about-container">
+          <img
+            class="about-image"
+            src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Cristiano_Ronaldo_2018.jpg"
+            alt="Cristiano Ronaldo"
+          />
+
+          <div class="about-text">
+            <h3>Cristiano Ronaldo dos Santos Aveiro</h3>
+
+            <p>
+              Cristiano Ronaldo is a Portuguese professional footballer widely
+              regarded as one of the greatest players in football history.
+            </p>
+
+            <p>
+              Born on 5 February 1985 in Funchal, Madeira, Ronaldo began his
+              professional career with Sporting CP before moving to Manchester
+              United.
+            </p>
+
+            <p>
+              His career has included major spells at Manchester United, Real
+              Madrid, Juventus and Al Nassr. He is known for his goal scoring,
+              athleticism, powerful shooting and dedication to training.
+            </p>
+          </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats">
+          <div class="stat">
+            <h3>7</h3>
+            <p>Major Shirt Numbers</p>
+          </div>
+
+          <div class="stat">
+            <h3>5</h3>
+            <p>Ballon d'Or Awards</p>
+          </div>
+
+          <div class="stat">
+            <h3>5</h3>
+            <p>Champions League Titles</p>
+          </div>
+
+          <div class="stat">
+            <h3>1</h3>
+            <p>European Championship</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Interesting Facts -->
+      <section class="facts" id="facts">
+        <h2 class="section-title">Interesting <span>Facts</span></h2>
+
+        <div class="fact-grid">
+          <div class="fact-card">
+            <div class="fact-number">01</div>
+            <h3>Madeira</h3>
+            <p>
+              Ronaldo was born in Funchal, on the Portuguese island of Madeira.
+            </p>
+          </div>
+
+          <div class="fact-card">
+            <div class="fact-number">02</div>
+            <h3>CR7</h3>
+            <p>
+              The nickname CR7 combines the first letter of his surname with the
+              number he became famous for wearing.
+            </p>
+          </div>
+
+          <div class="fact-card">
+            <div class="fact-number">03</div>
+            <h3>Portugal</h3>
+            <p>
+              Ronaldo helped Portugal win UEFA Euro 2016, giving the country its
+              first major men's international football title.
+            </p>
+          </div>
+
+          <div class="fact-card">
+            <div class="fact-number">04</div>
+            <h3>Real Madrid</h3>
+            <p>
+              Ronaldo became Real Madrid's all-time leading goalscorer during
+              his time at the club.
+            </p>
+          </div>
+
+          <div class="fact-card">
+            <div class="fact-number">05</div>
+            <h3>Champions League</h3>
+            <p>
+              He won the UEFA Champions League five times during his club
+              career.
+            </p>
+          </div>
+
+          <div class="fact-card">
+            <div class="fact-number">06</div>
+            <h3>Work Ethic</h3>
+            <p>
+              Ronaldo is famous for his disciplined approach to training and
+              maintaining his football fitness.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Interactive Feature -->
+      <section class="interactive" id="interactive">
+        <h2 class="section-title">CR7 <span>Random Fact</span></h2>
+
+        <div class="fact-box">
+          <p id="randomFact">Click the button to discover a Ronaldo fact.</p>
+
+          <button class="fact-button" onclick="generateFact()">
+            Show Me a Fact
+          </button>
+        </div>
+      </section>
+
+      <!-- Quote -->
+      <section class="quote">
+        <p>"Talent without working hard is nothing."</p>
+
+        <span> Cristiano Ronaldo </span>
+      </section>
+    </main>
+
+    <footer>
+      <p>Made by a <strong>CR7 fan</strong> | Cristiano Ronaldo Fan Page</p>
+    </footer>
+
+    <script>
+      const facts = [
+        "Cristiano Ronaldo was born on 5 February 1985 in Funchal, Madeira.",
+        "Ronaldo has won the Ballon d'Or five times.",
+        "He helped Portugal win UEFA Euro 2016.",
+        "Ronaldo has won the UEFA Champions League five times.",
+        "He became Real Madrid's all-time leading goalscorer.",
+        "His famous shirt number is 7, which inspired the nickname CR7.",
+        "Ronaldo began his senior club career with Sporting CP.",
+        "He has represented Portugal at multiple European Championships and World Cups.",
+      ];
+
+      function generateFact() {
+        const factElement = document.getElementById("randomFact");
+
+        const randomNumber = Math.floor(Math.random() * facts.length);
+
+        factElement.style.opacity = "0";
+
+        setTimeout(() => {
+          factElement.textContent = facts[randomNumber];
+
+          factElement.style.opacity = "1";
+        }, 200);
+      }
+    </script>
+  </body>
+</html>
