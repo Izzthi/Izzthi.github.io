@@ -1,241 +1,402 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Personal Website</title>
+    <!-- Bootstrap 5.3 CDN -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 40px 20px;
-        }
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding: 20px;
+      }
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            overflow: hidden;
-        }
+      /* Custom navbar styling */
+      .navbar-custom {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
 
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 40px 20px;
-            text-align: center;
-            color: white;
+      .navbar-custom .navbar-brand {
+        font-size: 1.5em;
+        font-weight: 700;
+        color: white !important;
+        letter-spacing: -0.5px;
+      }
+
+      .navbar-custom .nav-link {
+        color: rgba(255, 255, 255, 0.85) !important;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      .navbar-custom .nav-link:hover {
+        color: white !important;
+      }
+
+      .container-custom {
+        max-width: 800px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+      }
+
+      .header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 40px 20px;
+        text-align: center;
+        color: white;
+      }
+
+      .header h1 {
+        font-size: 2.5em;
+        margin-bottom: 10px;
+        font-weight: 700;
+        letter-spacing: -1px;
+      }
+
+      .header p {
+        font-size: 1.1em;
+        opacity: 0.95;
+        font-weight: 300;
+      }
+
+      .content {
+        padding: 50px 30px;
+      }
+
+      .photo-section {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .photo-section img {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        border: 5px solid #667eea;
+        object-fit: cover;
+        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        transition: transform 0.3s ease;
+      }
+
+      .photo-section img:hover {
+        transform: scale(1.05);
+      }
+
+      .video-section {
+        margin-bottom: 40px;
+      }
+
+      .video-section h2 {
+        color: #333;
+        margin-bottom: 20px;
+        font-size: 1.8em;
+        font-weight: 600;
+      }
+
+      .video-container {
+        position: relative;
+        width: 100%;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+
+      .bio-section h2 {
+        color: #333;
+        margin-bottom: 20px;
+        font-size: 1.8em;
+        font-weight: 600;
+      }
+
+      .bio-card {
+        border: none;
+        border-left: 5px solid #667eea;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      }
+
+      .bio-card .card-body {
+        padding: 25px;
+      }
+
+      .bio-card p {
+        font-size: 1.05em;
+        line-height: 1.8;
+        color: #333;
+        margin-bottom: 15px;
+      }
+
+      .bio-card strong {
+        color: #667eea;
+        font-weight: 600;
+      }
+
+      .hobbies {
+        margin-top: 15px;
+      }
+
+      .hobbies p {
+        margin-top: 10px;
+      }
+
+      .interest-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 15px;
+      }
+
+      /* Bootstrap badge customization */
+      .badge-primary-custom {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 8px 12px;
+        font-size: 0.9em;
+        font-weight: 500;
+      }
+
+      .badge-secondary-custom {
+        background: #f093fb;
+        padding: 8px 12px;
+        font-size: 0.9em;
+        font-weight: 500;
+      }
+
+      .btn-custom {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border: none;
+        padding: 10px 20px;
+        font-weight: 600;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .btn-custom:hover {
+        background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        color: white;
+      }
+
+      footer {
+        background: #f5f7fa;
+        padding: 20px;
+        text-align: center;
+        color: #666;
+        font-size: 0.9em;
+        border-top: 1px solid #eee;
+      }
+
+      @media (max-width: 600px) {
+        .content {
+          padding: 30px 20px;
         }
 
         .header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            font-weight: 700;
-            letter-spacing: -1px;
-        }
-
-        .header p {
-            font-size: 1.1em;
-            opacity: 0.95;
-            font-weight: 300;
-        }
-
-        .content {
-            padding: 50px 30px;
-        }
-
-        .photo-section {
-            text-align: center;
-            margin-bottom: 40px;
+          font-size: 1.8em;
         }
 
         .photo-section img {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            border: 5px solid #667eea;
-            object-fit: cover;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
-            transition: transform 0.3s ease;
+          width: 150px;
+          height: 150px;
         }
 
-        .photo-section img:hover {
-            transform: scale(1.05);
-        }
-
-        .video-section {
-            margin-bottom: 40px;
-        }
-
-        .video-section h2 {
-            color: #333;
-            margin-bottom: 20px;
-            font-size: 1.8em;
-            font-weight: 600;
-        }
-
-        .video-container {
-            position: relative;
-            width: 100%;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
+        .video-section h2,
         .bio-section h2 {
-            color: #333;
-            margin-bottom: 20px;
-            font-size: 1.8em;
-            font-weight: 600;
+          font-size: 1.4em;
         }
-
-        .bio-box {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            border-left: 5px solid #667eea;
-            padding: 25px;
-            border-radius: 10px;
-            font-size: 1.05em;
-            line-height: 1.8;
-            color: #333;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .bio-box strong {
-            color: #667eea;
-            font-weight: 600;
-        }
-
-        .hobbies {
-            margin-top: 20px;
-        }
-
-        .hobbies p {
-            margin-top: 10px;
-        }
-
-        .interest-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .tag {
-            background: #667eea;
-            color: white;
-            padding: 8px 15px;
-            border-radius: 25px;
-            font-size: 0.9em;
-            font-weight: 500;
-            display: inline-block;
-        }
-
-        .tag:nth-child(2) {
-            background: #764ba2;
-        }
-
-        .tag:nth-child(3) {
-            background: #f093fb;
-        }
-
-        footer {
-            background: #f5f7fa;
-            padding: 20px;
-            text-align: center;
-            color: #666;
-            font-size: 0.9em;
-            border-top: 1px solid #eee;
-        }
-
-        @media (max-width: 600px) {
-            .content {
-                padding: 30px 20px;
-            }
-
-            .header h1 {
-                font-size: 1.8em;
-            }
-
-            .photo-section img {
-                width: 150px;
-                height: 150px;
-            }
-
-            .video-section h2,
-            .bio-section h2 {
-                font-size: 1.4em;
-            }
-        }
+      }
     </style>
-</head>
-<body>
-    <div class="container">
-        <div class="header">
-            <h1>Welcome to My Website</h1>
-            <p>Information Systems Student | Aviation Enthusiast</p>
+  </head>
+  <body>
+    <!-- Bootstrap Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom mb-4">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">My Portfolio</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#interests">Interests</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-custom">
+      <div class="header">
+        <h1>Welcome to My Website</h1>
+        <p>Information Systems Student | Aviation Enthusiast</p>
+      </div>
+
+      <div class="content">
+        <!-- Photo Section -->
+        <div class="photo-section">
+          <img src="Profile.jpg" alt="Profile Photo" />
         </div>
 
-        <div class="content">
-            <!-- Photo Section -->
-            <div class="photo-section">
-                <img src="I__2_.jpg" alt="Profile Photo">
-            </div>
-
-            <!-- Video Section -->
-            <div class="video-section">
-                <h2>🌍 My Favorite Destination: Turkey</h2>
-                <div class="video-container">
-                    <iframe 
-                        src="https://www.youtube.com/embed/G2wBjPr1RjI?autoplay=1&mute=1&loop=1&playlist=G2wBjPr1RjI" 
-                        allowfullscreen="" 
-                        allow="autoplay">
-                    </iframe>
-                </div>
-            </div>
-
-            <!-- Biography Section -->
-            <div class="bio-section">
-                <h2>About Me</h2>
-                <div class="bio-box">
-                    <p>
-                        Hi! I'm a <strong>Year 2 Information Systems Student</strong> with a passion for technology and operations. 
-                        I previously studied aviation and have a keen interest in airport operations and how complex systems 
-                        are managed at scale.
-                    </p>
-                    <div class="hobbies">
-                        <p><strong>My Passion:</strong> When I'm not studying, you'll find me on the soccer field. I love the 
-                        teamwork, strategy, and energy that comes with the sport. It keeps me balanced and energized.</p>
-                    </div>
-                    <div class="interest-tags">
-                        <span class="tag">💻 Information Systems</span>
-                        <span class="tag">✈️ Airport Operations</span>
-                        <span class="tag">⚽ Soccer</span>
-                    </div>
-                </div>
-            </div>
+        <!-- Video Section -->
+        <div class="video-section">
+          <h2>🌍 My Favorite Destination: Turkey</h2>
+          <div class="video-container">
+            <iframe
+              src="https://www.youtube.com/embed/G2wBjPr1RjI?autoplay=1&mute=1&loop=1&playlist=G2wBjPr1RjI"
+              allowfullscreen=""
+              allow="autoplay"
+            >
+            </iframe>
+          </div>
         </div>
 
-        <footer>
-            <p>&copy; 2024 Personal Website. Built with HTML & CSS | Hosted on GitHub Pages</p>
-        </footer>
+        <!-- Biography Section with Bootstrap Card -->
+        <div class="bio-section" id="about">
+          <h2>About Me</h2>
+          <div class="card bio-card">
+            <div class="card-body">
+              <p>
+                Hi! I'm a
+                <strong>Year 2 Information Systems Student</strong> with a
+                passion for technology and operations. I previously studied
+                aviation and have a keen interest in airport operations and how
+                complex systems are managed at scale.
+              </p>
+              <div class="hobbies">
+                <p>
+                  <strong>My Passion:</strong> When I'm not studying, you'll
+                  find me on the soccer field. I love the teamwork, strategy,
+                  and energy that comes with the sport. It keeps me balanced and
+                  energized.
+                </p>
+              </div>
+
+              <!-- Bootstrap Badges for Interest Tags -->
+              <div class="interest-tags" id="interests">
+                <span class="badge badge-primary-custom"
+                  >💻 Information Systems</span
+                >
+                <span class="badge badge-primary-custom"
+                  >✈️ Airport Operations</span
+                >
+                <span class="badge badge-secondary-custom">⚽ Soccer</span>
+              </div>
+
+              <!-- Bootstrap Button -->
+              <div class="mt-4">
+                <button
+                  class="btn btn-custom"
+                  data-bs-toggle="modal"
+                  data-bs-target="#contactModal"
+                  id="contact"
+                >
+                  Get In Touch
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <p>
+          &copy; 2024 Personal Website. Built with HTML, CSS & Bootstrap |
+          Hosted on GitHub Pages
+        </p>
+      </footer>
     </div>
-</body>
+
+    <!-- Bootstrap Modal -->
+    <div
+      class="modal fade"
+      id="contactModal"
+      tabindex="-1"
+      aria-labelledby="contactModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div
+            class="modal-header"
+            style="
+              background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+              color: white;
+            "
+          >
+            <h1 class="modal-title fs-5" id="contactModalLabel">
+              Get In Touch
+            </h1>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p>Thanks for your interest! You can reach me through:</p>
+            <ul class="list-unstyled">
+              <li><strong>Email:</strong> zisthi@gmail.com</li>
+              <li><strong>LinkedIn:</strong> linkedin.com/in/mohamedisthiaq</li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  </body>
 </html>
